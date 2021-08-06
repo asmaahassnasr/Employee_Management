@@ -24,7 +24,10 @@ namespace Employees_Management.Models
 
         public Employee Delete(int id)
         {
-            throw new NotImplementedException();
+            Employee employee = emps.FirstOrDefault(e => e.Id==id);
+            if (employee != null)
+                emps.Remove(employee);
+            return employee;
         }
 
         public IEnumerable<Employee> GetAllEmployees()

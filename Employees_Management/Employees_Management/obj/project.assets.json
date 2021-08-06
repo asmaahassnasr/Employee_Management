@@ -5709,11 +5709,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Employees_Management\\Employees_Management\\Employees_Management.csproj",
+      "projectUniqueName": "E:\\Employee_Management\\Employees_Management\\Employees_Management\\Employees_Management.csproj",
       "projectName": "Employees_Management",
-      "projectPath": "E:\\Employees_Management\\Employees_Management\\Employees_Management.csproj",
+      "projectPath": "E:\\Employee_Management\\Employees_Management\\Employees_Management\\Employees_Management.csproj",
       "packagesPath": "C:\\Users\\M.C.C\\.nuget\\packages\\",
-      "outputPath": "E:\\Employees_Management\\Employees_Management\\obj\\",
+      "outputPath": "E:\\Employee_Management\\Employees_Management\\Employees_Management\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\M.C.C\\AppData\\Roaming\\NuGet\\NuGet.Config",
