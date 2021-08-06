@@ -33,12 +33,12 @@ namespace Employees_Management.Models
 
         public IEnumerable<Employee> GetAllEmployees()
         {
-            throw new NotImplementedException();
+            return context.Employees;
         }
 
         public Employee GetEmployee(int id)
         {
-            throw new NotImplementedException();
+            return context.Employees.Find(id);
         }
 
         public Employee Update(Employee employeeChanges)
