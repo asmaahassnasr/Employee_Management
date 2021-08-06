@@ -43,7 +43,10 @@ namespace Employees_Management.Models
 
         public Employee Update(Employee employeeChanges)
         {
-            throw new NotImplementedException();
+            var employee = context.Employees.Attach(employeeChanges);
+            employee.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            context.SaveChanges();
+            return employeeChanges;
         }
     }
 }
