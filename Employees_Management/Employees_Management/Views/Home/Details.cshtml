@@ -1,0 +1,78 @@
+﻿@*@model Employee*@
+@model HomeDetailsViewModel
+
+     @{ 
+         ViewBag.Title = "Details";
+     }
+    @* Displaying data from Details page by using ViewData["key"] *@
+    @*<h1> @ViewData["PageTitle"] </h1>
+        @{
+            var emp = ViewData["Employee"] as Employees_Management.Models.Employee;
+        }
+        <h3> ------------ Data ----------------------</h3>
+        <p> ID         : @emp.Id </p>
+        <p> Name       : @emp.Name </p>
+        <p> Email      : @emp.Emial </p>
+        <p> Department : @emp.Department </p>
+
+        <h3> ------------ End -----------------</h3>*@
+
+    @* By Using ViewBag.PropertyName  *@
+    @*<h1> @ViewBag.PageTitle </h1>
+        <h3> ------------ Data ----------------------</h3>
+        <p> ID         : @ViewBag.Employee.Id</p>
+        <p> Name       : @ViewBag.Employee.Name </p>
+        <p> Email      : @ViewBag.Employee.Emial </p>
+        <p> Department : @ViewBag.Employee.Department </p>
+
+        <h3> ------------ End -----------------</h3>*@
+
+
+    @* Using Strongly Typed view*@
+    @*<h1> @ViewBag.PageTitle </h1>
+        <h3> ------------ Data ----------------------</h3>
+        <p> ID         : @Model.Id</p>
+        <p> Name       : @Model.Name </p>
+        <p> Email      : @Model.Emial </p>
+        <p> Department : @Model.Department </p>
+
+        <h3> ------------ End -----------------</h3>*@
+
+    @* using View Model *@
+    @*<h1> @Model.PageTitle </h1>
+    <h3> ------------ Data ----------------------</h3>
+    <p> ID         : @Model.Employee.Id</p>
+    <p> Name       : @Model.Employee.Name </p>
+    <p> Email      : @Model.Employee.Emial </p>
+    <p> Department : @Model.Employee.Department </p>
+
+    <h3> ------------ End -----------------</h3>*@
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.Employee.Name</h1>
+            </div>
+
+            <div class="card-body text-center">
+                <img  class="card-img-top"  src="~/images/image_1.jpg"   asp-append-version="true"/>
+
+                <h4>Employee ID : @Model.Employee.Id</h4>
+                <h4>Email : @Model.Employee.Emial</h4>
+                <h4>Department : @Model.Employee.Department</h4>
+
+            </div>
+            <div class="card-footer text-center">
+                <a  asp-controller="home" asp-action="index" class="btn btn-primary">Back</a>
+                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* If I want to invoke js file *@
+@section Scripts{
+    <script src="~/js/site.js"></script>
+ }
