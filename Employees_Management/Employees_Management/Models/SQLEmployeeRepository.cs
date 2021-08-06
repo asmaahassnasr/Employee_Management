@@ -22,7 +22,13 @@ namespace Employees_Management.Models
 
         public Employee Delete(int id)
         {
-            throw new NotImplementedException();
+            Employee employee = context.Employees.Find(id);
+            if(employee != null)
+            {
+                context.Employees.Remove(employee);
+                context.SaveChanges();
+            }
+            return employee;
         }
 
         public IEnumerable<Employee> GetAllEmployees()
