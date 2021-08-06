@@ -42,7 +42,14 @@ namespace Employees_Management.Models
 
         public Employee Update(Employee employeeChanges)
         {
-            throw new NotImplementedException();
+            Employee employee = emps.FirstOrDefault(e => e.Id == employeeChanges.Id);
+            if (employee != null)
+            {
+                employee.Id = employeeChanges.Id;
+                employee.Name = employeeChanges.Name;
+                employee.Department = employeeChanges.Department;
+            }
+            return employee;
         }
     }
 }
