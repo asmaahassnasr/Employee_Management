@@ -7,6 +7,12 @@ namespace Employees_Management.Models
 {
     public class SQLEmployeeRepository : IEmployeeRepository
     {
+        private readonly AppDbContext context;
+
+        public SQLEmployeeRepository(AppDbContext _context)
+        {
+           context = _context;
+        }
         public Employee Add(Employee employee)
         {
             throw new NotImplementedException();
