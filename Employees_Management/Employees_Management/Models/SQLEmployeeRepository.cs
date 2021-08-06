@@ -15,7 +15,9 @@ namespace Employees_Management.Models
         }
         public Employee Add(Employee employee)
         {
-            throw new NotImplementedException();
+            context.Employees.Add(employee);
+            context.SaveChanges();
+            return employee;
         }
 
         public Employee Delete(int id)
