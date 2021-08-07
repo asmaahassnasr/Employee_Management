@@ -1,8 +1,10 @@
 ﻿using Employees_Management.Models;
 using Employees_Management.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -13,9 +15,12 @@ namespace Employees_Management.Controllers
     public class HomeController : Controller
     {
        private  IEmployeeRepository _employeeRepository;
-        public HomeController(IEmployeeRepository employeeRepository)
+        private IHostingEnvironment hostingEnvironment;
+
+        public HomeController(IEmployeeRepository employeeRepository, IHostingEnvironment _hostingEnvironment)
         {
             _employeeRepository = employeeRepository;
+            hostingEnvironment = _hostingEnvironment;
         }
         public ViewResult Index()
         {
@@ -60,12 +65,27 @@ namespace Employees_Management.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Employee employee)
+        public IActionResult Create(CreateEmployeeViewModel model)
         {
             if (ModelState.IsValid)
             {
-                Employee model = _employeeRepository.Add(employee);
-                return RedirectToAction("details", new { id = model.Id });
+                string UniqFileName = null;
+                if(model.Photo != null)
+                {
+                   string uploadsFolder=  Path.Combine(hostingEnvironment.WebRootPath,"images");
+                    UniqFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
+                    string filePath = Path.Combine(uploadsFolder, UniqFileName);
+                    model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
+                }
+                Employee newEmp = new Employee
+                {
+                    Name=model.Name,
+                    Emial=model.Emial,
+                    Department=model.Department,
+                     PhotoPath=UniqFileName
+                };
+                _employeeRepository.Add(newEmp);
+                return RedirectToAction("details", new { id = newEmp.Id });
             }
             return View();
         }
