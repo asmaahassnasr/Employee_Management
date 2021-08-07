@@ -19,7 +19,7 @@ namespace Employees_Management.ViewModels
         public string Emial { get; set; }
         [Required]
         public Dept? Department { get; set; }
-
+       
         public IFormFile Photo { get; set; }
     }
 }
