@@ -13,5 +13,12 @@ namespace Employees_Management.Models
 
         }
         public DbSet<Employee> Employees { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Employee>().HasData(
+                new Employee { Id=1, Name="Emp001", Emial="emp1@gmail.com", Department=Dept.HR}
+                );
+        }
     }
 }
