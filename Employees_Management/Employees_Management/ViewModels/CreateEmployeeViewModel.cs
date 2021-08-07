@@ -22,7 +22,7 @@ namespace Employees_Management.ViewModels
        
         //If it just on file
         //public IFormFile Photo { get; set; }
-        //For multiple files
+        //For multiple files .. 
         public List<IFormFile> Photos { get; set; }
     }
 }
