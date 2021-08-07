@@ -48,6 +48,9 @@ namespace Employees_Management
               //  app.UseStatusCodePagesWithRedirects("/Error/{0}");
                 //URL Error with ReExecute better than redirect
                 app.UseStatusCodePagesWithReExecute("/Error/{0}");
+
+                //Global exeption handeling
+                app.UseExceptionHandler("/Error");
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,17 @@ namespace Employees_Management.Controllers
                     break;
             }
             return View("NotFound");
+        }
+
+        [Route("Error")]
+        [AllowAnonymous]
+        public IActionResult Error()
+        {
+            var ExeptionDetails = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+            ViewBag.ExeptionPath = ExeptionDetails.Path;
+            ViewBag.ExeptionMessage = ExeptionDetails.Error.Message;
+            ViewBag.ExpetionStackTrace = ExeptionDetails.Error.StackTrace;
+            return View("Error");
         }
     }
 }
