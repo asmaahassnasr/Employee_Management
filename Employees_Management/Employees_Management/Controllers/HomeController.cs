@@ -94,5 +94,20 @@ namespace Employees_Management.Controllers
             }
             return View();
         }
+
+        [HttpGet]
+        public ViewResult Edit(int id)
+        {
+            Employee employee = _employeeRepository.GetEmployee(id);
+            EditEmployeeViewModel editEmployeeViewModel = new EditEmployeeViewModel
+            {
+                Id=employee.Id,
+                Emial=employee.Emial,
+                Department=employee.Department,
+                Name=employee.Name,
+                ExistingPhotoPath=employee.PhotoPath
+            };
+            return View(editEmployeeViewModel);
+        }
     }
 }
