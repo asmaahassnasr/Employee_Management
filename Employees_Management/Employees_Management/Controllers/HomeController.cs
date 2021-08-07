@@ -101,6 +101,31 @@ namespace Employees_Management.Controllers
             return View(editEmployeeViewModel);
         }
 
+        [HttpPost]
+        public IActionResult Edit(EditEmployeeViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Employee employee = _employeeRepository.GetEmployee(model.Id);
+                employee.Name = model.Name;
+                employee.Emial = model.Emial;
+                employee.Department = model.Department;
+                if(model.Photo != null)
+                {
+                    //Delete the old image 
+                    if(model.ExistingPhotoPath != null)
+                    {
+                      string FilePath=  Path.Combine(hostingEnvironment.WebRootPath, "images", model.ExistingPhotoPath);
+                        System.IO.File.Delete(FilePath);
+                    }
+                    //add new updated image
+                    employee.PhotoPath= ProcessUploadedFiles(model); ;
+                }
+                _employeeRepository.Update(employee);
+                return RedirectToAction("index");
+            }
+            return View();
+        }
 
         private string ProcessUploadedFiles(CreateEmployeeViewModel model)
         {
