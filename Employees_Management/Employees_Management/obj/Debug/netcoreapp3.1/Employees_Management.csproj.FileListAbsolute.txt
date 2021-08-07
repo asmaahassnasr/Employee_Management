@@ -154,3 +154,4 @@ E:\Employee_Management\Employees_Management\Employees_Management\bin\Debug\netco
 E:\Employee_Management\Employees_Management\Employees_Management\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 E:\Employee_Management\Employees_Management\Employees_Management\obj\Debug\netcoreapp3.1\Razor\Views\Home\Edit.cshtml.g.cs
 E:\Employee_Management\Employees_Management\Employees_Management\obj\Debug\netcoreapp3.1\Razor\Views\Home\EmployeeNotFound.cshtml.g.cs
+E:\Employee_Management\Employees_Management\Employees_Management\obj\Debug\netcoreapp3.1\Razor\Views\Shared\NotFound.cshtml.g.cs

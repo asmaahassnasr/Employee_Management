@@ -41,9 +41,11 @@ namespace Employees_Management
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                //app.UseExceptionHandler("/Home/Error");
+                //app.UseHsts();
+
+                //URL Error with Redirects
+                app.UseStatusCodePagesWithRedirects("/Error/{0}");
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
