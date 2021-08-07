@@ -53,9 +53,19 @@ namespace Employees_Management.Controllers
             // passing model to the view to be strongly typed view 
             //return View(model);
 
+
+            Employee employee = _employeeRepository.GetEmployee(id.Value);
+
+            if(employee == null)
+            {
+                Response.StatusCode=404;
+                return View("EmployeeNotFound", id.Value);
+            }
+
+
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
-                Employee = _employeeRepository.GetEmployee(id??1),
+                Employee = employee,
                 PageTitle = "Employee Details Page "
             };
             return View(homeDetailsViewModel);
@@ -117,9 +127,10 @@ namespace Employees_Management.Controllers
                     {
                       string FilePath=  Path.Combine(hostingEnvironment.WebRootPath, "images", model.ExistingPhotoPath);
                         System.IO.File.Delete(FilePath);
+                        //model.ExistingPhotoPath= ProcessUploadedFiles(model);
                     }
                     //add new updated image
-                    employee.PhotoPath= ProcessUploadedFiles(model); ;
+                    employee.PhotoPath= ProcessUploadedFiles(model); 
                 }
                 _employeeRepository.Update(employee);
                 return RedirectToAction("index");
