@@ -54,15 +54,21 @@
         <script>
             $(document).ready(function () {
                 $('.custom-file-input').on("change", function () {
+                    //If file to uploaded is single file
                     //var fileName = $(this).val().split("\\").pop();
                     //$(this).next('.custom-file-label').html(fileName);
 
+                    //If file to uploaded is multiple files
+
                     var fileLabel = $(this).next('.custom-file-label');
                     var files = $(this)[0].files;
-                    if (files.length > 1)
+                    if (files.length > 1) {
                         fileLabel.html(files.length + ' files selected');
-                    else if (File.length == 1)
+                    }
+                    else if (File.length == 1) {
+
                         fileLabel.html(files[0].name);
+                    }
                 });
             });
         </script>
