@@ -70,39 +70,21 @@ namespace Employees_Management.Controllers
         {
             if (ModelState.IsValid)
             {
-                string UniqFileName = null;
+                string UniqFileName = ProcessUploadedFiles(model); 
 
-                //if(model.Photos != null && model.Photos.Count > 0)
-                //{
-                //    foreach (IFormFile photo  in model.Photos)
-                //    {
-                //        string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
-                //        UniqFileName = Guid.NewGuid().ToString() + "_" + photo.FileName;
-                //        string filePath = Path.Combine(uploadsFolder, UniqFileName);
-                //        photo.CopyTo(new FileStream(filePath, FileMode.Create));
-                //    }
-                //}
-                if (model.Photo != null)
-                {
-                   
-                        string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
-                        UniqFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
-                        string filePath = Path.Combine(uploadsFolder, UniqFileName);
-                        model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
-                   
-                }
                 Employee newEmp = new Employee
                 {
-                    Name=model.Name,
-                    Emial=model.Emial,
-                    Department=model.Department,
-                     PhotoPath=UniqFileName
+                    Name = model.Name,
+                    Emial = model.Emial,
+                    Department = model.Department,
+                    PhotoPath = UniqFileName
                 };
                 _employeeRepository.Add(newEmp);
                 return RedirectToAction("details", new { id = newEmp.Id });
             }
             return View();
         }
+
 
         [HttpGet]
         public ViewResult Edit(int id)
@@ -117,6 +99,37 @@ namespace Employees_Management.Controllers
                 ExistingPhotoPath=employee.PhotoPath
             };
             return View(editEmployeeViewModel);
+        }
+
+
+        private string ProcessUploadedFiles(CreateEmployeeViewModel model)
+        {
+            string UniqFileName = null;
+            //If Multiple uploaded files
+            //if(model.Photos != null && model.Photos.Count > 0)
+            //{
+            //    foreach (IFormFile photo  in model.Photos)
+            //    {
+            //        string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
+            //        UniqFileName = Guid.NewGuid().ToString() + "_" + photo.FileName;
+            //        string filePath = Path.Combine(uploadsFolder, UniqFileName);
+            //        photo.CopyTo(new FileStream(filePath, FileMode.Create));
+            //    }
+            //}
+
+
+            if (model.Photo != null)
+            {
+
+                string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
+                UniqFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
+                string filePath = Path.Combine(uploadsFolder, UniqFileName);
+                model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
+
+
+            }
+
+            return UniqFileName;
         }
     }
 }
