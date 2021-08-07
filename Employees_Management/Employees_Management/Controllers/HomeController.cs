@@ -70,12 +70,12 @@ namespace Employees_Management.Controllers
             if (ModelState.IsValid)
             {
                 string UniqFileName = null;
-                if(model.Photo != null)
+                if(model.Photos != null)
                 {
                    string uploadsFolder=  Path.Combine(hostingEnvironment.WebRootPath,"images");
-                    UniqFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
+                    UniqFileName = Guid.NewGuid().ToString() + "_" + model.Photos.FileName;
                     string filePath = Path.Combine(uploadsFolder, UniqFileName);
-                    model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
+                    model.Photos.CopyTo(new FileStream(filePath, FileMode.Create));
                 }
                 Employee newEmp = new Employee
                 {
