@@ -45,8 +45,8 @@ namespace Employees_Management
                 //app.UseHsts();
 
                 //URL Error with Redirects
-                app.UseStatusCodePagesWithRedirects("/Error/{0}");
-                //URL Error with ReExecute
+              //  app.UseStatusCodePagesWithRedirects("/Error/{0}");
+                //URL Error with ReExecute better than redirect
                 app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
             app.UseHttpsRedirection();
