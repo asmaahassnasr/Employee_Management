@@ -18,5 +18,7 @@ namespace Employees_Management.Models
         public string Emial { get; set; }
         [Required]
         public Dept? Department { get; set; }
+
+        public string PhotoPath { get; set; }
     }
 }
