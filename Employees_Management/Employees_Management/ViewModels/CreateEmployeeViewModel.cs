@@ -21,8 +21,9 @@ namespace Employees_Management.ViewModels
         public Dept? Department { get; set; }
        
         //If it just on file
-        //public IFormFile Photo { get; set; }
+        public IFormFile Photo { get; set; }
+
         //For multiple files .. 
-        public List<IFormFile> Photos { get; set; }
+       // public List<IFormFile> Photos { get; set; }
     }
 }
