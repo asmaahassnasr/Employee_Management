@@ -27,7 +27,8 @@ namespace Employees_Management
         {
             services.AddDbContextPool<AppDbContext>(options => options.
             UseSqlServer(Configuration.GetConnectionString("EmployeeDBConnection")));
-            services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
+            //services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
+            services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
             services.AddControllersWithViews();
         }
 
