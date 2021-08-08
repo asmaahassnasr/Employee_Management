@@ -18,11 +18,13 @@ namespace Employees_Management.Controllers
             userManager = _userManager;
             signInManager = _signInManager;
         }
+
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Register(RegisterUserViewModel model)
         {
