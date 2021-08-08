@@ -41,7 +41,11 @@ namespace Employees_Management.Controllers
         public ViewResult Details(int? id)
         {
 
-            throw new Exception("Details page");
+            //To test global exeption handeling
+            //throw new Exception("Details page");
+
+
+
             //Employee model = _employeeRepository.GetEmployee(3);
             //using ViewData ["Key"]
             //ViewData["Employee"]= model;
