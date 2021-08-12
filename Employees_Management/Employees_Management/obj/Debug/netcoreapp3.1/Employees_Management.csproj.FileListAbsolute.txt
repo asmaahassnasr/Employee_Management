@@ -164,3 +164,4 @@ E:\Employee_Management\Employees_Management\Employees_Management\bin\Debug\netco
 E:\Employee_Management\Employees_Management\Employees_Management\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 E:\Employee_Management\Employees_Management\Employees_Management\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 E:\Employee_Management\Employees_Management\Employees_Management\obj\Debug\netcoreapp3.1\Razor\Views\Adminstration\CreateRole.cshtml.g.cs
+E:\Employee_Management\Employees_Management\Employees_Management\obj\Debug\netcoreapp3.1\Razor\Views\Adminstration\ListRoles.cshtml.g.cs
