@@ -50,6 +50,25 @@ namespace Employees_Management.Controllers
                 return  View(model);
             
         }
+
+        //Custom email validation check if it used befor for an account or no
+        [HttpGet]
+        [HttpPost]
+        public async Task<IActionResult> IsEmailInUse(string email)
+        {
+            var user = await userManager.FindByEmailAsync(email);
+            if(user == null)
+            {
+                return Json(true);
+            }
+            else
+            {
+                return Json($"This email {email} is already used ");
+            }
+        }
+
+
+
         [HttpGet]
         public IActionResult Login()
         {
