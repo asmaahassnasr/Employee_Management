@@ -64,7 +64,7 @@ namespace Employees_Management.Controllers
 
             var model = new EditRoleViewModel { Id = role.Id, RoleName = role.Name };
 
-            foreach (var user in userManager.Users)
+            foreach (var user in userManager.Users.ToList())
             {
                 if( await userManager.IsInRoleAsync(user,role.Name))
                 {
