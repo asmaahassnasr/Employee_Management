@@ -6,15 +6,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using Employees_Management.Models;
 
 namespace Employees_Management.Controllers
 {
     public class AccountController : Controller
     {
-        private UserManager<IdentityUser> userManager;
-        private SignInManager<IdentityUser> signInManager;
+        private UserManager<ApplicationUser> userManager;
+        private SignInManager<ApplicationUser> signInManager;
 
-        public AccountController(UserManager<IdentityUser> _userManager , SignInManager<IdentityUser> _signInManager)
+        public AccountController(UserManager<ApplicationUser> _userManager , SignInManager<ApplicationUser> _signInManager)
         {
             userManager = _userManager;
             signInManager = _signInManager;
@@ -32,7 +33,7 @@ namespace Employees_Management.Controllers
             if(ModelState.IsValid)
             {
 
-                var user = new IdentityUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
 
                 var result = await userManager.CreateAsync(user,model.Password);
 
