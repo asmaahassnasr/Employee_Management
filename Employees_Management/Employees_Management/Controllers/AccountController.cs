@@ -56,14 +56,21 @@ namespace Employees_Management.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model , string returnUrl)
         {
             if(ModelState.IsValid)
             {
                 var result = await signInManager.PasswordSignInAsync(model.Email,model.Password,model.RememberMe,false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("index","home");
+                    if((!string.IsNullOrEmpty(returnUrl)) && Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("index","home");
+                    }
                 }
                 else
                 {
