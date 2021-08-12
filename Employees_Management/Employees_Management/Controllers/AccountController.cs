@@ -33,7 +33,11 @@ namespace Employees_Management.Controllers
             if(ModelState.IsValid)
             {
 
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser {
+                    UserName = model.Email,
+                    Email = model.Email ,
+                    City= model.City
+                };
 
                 var result = await userManager.CreateAsync(user,model.Password);
 
