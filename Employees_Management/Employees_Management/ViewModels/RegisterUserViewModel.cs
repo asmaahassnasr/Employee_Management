@@ -26,5 +26,8 @@ namespace Employees_Management.ViewModels
         [Compare("Password", ErrorMessage ="Doesnot match")]
         public string ConfirmPassword { get; set; }
 
+        [Required]
+        [StringLength(50,ErrorMessage ="Min is 5 Char, and Max is 50",MinimumLength =5)]
+        public string City { get; set; }
     }
 }
