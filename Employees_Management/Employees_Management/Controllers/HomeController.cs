@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Employees_Management.Controllers
 {
@@ -76,11 +77,14 @@ namespace Employees_Management.Controllers
             return View(homeDetailsViewModel);
         }
         [HttpGet]
+        [Authorize]
         public ViewResult Create()
         {
             return View();
         }
+
         [HttpPost]
+        [Authorize]
         public IActionResult Create(CreateEmployeeViewModel model)
         {
             if (ModelState.IsValid)
