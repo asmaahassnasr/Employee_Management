@@ -106,6 +106,7 @@ namespace Employees_Management.Controllers
 
 
         [HttpGet]
+        [Authorize]
         public ViewResult Edit(int id)
         {
             Employee employee = _employeeRepository.GetEmployee(id);
@@ -121,6 +122,7 @@ namespace Employees_Management.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Edit(EditEmployeeViewModel model)
         {
             if (ModelState.IsValid)

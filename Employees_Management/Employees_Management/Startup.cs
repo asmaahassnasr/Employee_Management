@@ -1,4 +1,5 @@
 using Employees_Management.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -43,6 +44,13 @@ namespace Employees_Management
             //    options.Password.RequiredLength = 10;
             //    options.Password.RequiredUniqueChars = 3;
             //    options.Password.RequireNonAlphanumeric = false;
+            //});
+
+            //Add Global Authorization
+            //services.AddMvc(config =>
+            //{
+            //    var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+            //    config.Filters.Add(new AuthorizationFilter(policy));
             //});
 
             services.AddControllersWithViews();
