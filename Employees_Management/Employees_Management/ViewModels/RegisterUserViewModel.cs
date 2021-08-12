@@ -15,7 +15,7 @@ namespace Employees_Management.ViewModels
         //Remote Validation From Server 
         [Remote(action: "IsEmailInUse",controller:"Account")]
         //Custom Validation Attr from client
-        [ValidEmailDomainAttribute(allowDomain:"gmail.com",ErrorMessage ="Must be gmail account")]
+        [ValidEmailDomain(allowDomain:"gmail.com",ErrorMessage ="Must be gmail account")]
         public string Email { get; set; }
         [Required]
         [DataType(DataType.Password)]

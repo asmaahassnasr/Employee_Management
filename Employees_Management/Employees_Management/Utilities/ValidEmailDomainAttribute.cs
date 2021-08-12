@@ -18,7 +18,7 @@ namespace Employees_Management.Utilities
         public override bool IsValid(object value)
         {
             string[] parts = value.ToString().Split('@');
-            return parts[1].ToUpper() == this.allowDomain.ToUpper();
+            return parts[1].ToUpper() == allowDomain.ToUpper();
         }
 
     }
